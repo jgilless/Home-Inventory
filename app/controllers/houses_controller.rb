@@ -1,0 +1,48 @@
+class HousesController < ApplicationController
+  before_action :set_house, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+
+  respond_to :html, :js, :json
+
+  def index
+    @houses = current_user.houses.all
+    respond_with(@houses)
+  end
+
+  def show
+    respond_with(@house)
+  end
+
+  def new
+    @house = current_user.houses.new
+    respond_with(@house)
+  end
+
+  def edit
+  end
+
+  def create
+    @house = current_user.houses.new(house_params)
+    @house.save
+    respond_with(@house)
+  end
+
+  def update
+    @house.update(house_params)
+    respond_with(@house)
+  end
+
+  def destroy
+    @house.destroy
+    respond_with(@house)
+  end
+
+  private
+    def set_house
+      @house = House.find(params[:id])
+    end
+
+    def house_params
+      params.require(:house).permit(:user_id, :name, :address_attributes => [:line_1, :line_2, :number, :city, :zip, :state, :country])
+    end
+end
