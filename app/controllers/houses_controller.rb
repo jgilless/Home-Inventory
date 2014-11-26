@@ -6,6 +6,9 @@ class HousesController < ApplicationController
 
   def index
     @houses = current_user.houses.all
+    @rooms = current_user.rooms.all
+    @items = current_user.items
+    @categories = current_user.categories
     respond_with(@houses)
   end
 

@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
+  post '/rooms' => 'rooms#create'
+
+  post '/categories' => 'categories#create'
+
   get 'items' => 'items#index', as: :items
+
+  get '/house_items' => 'items#house_items', as: :house_items
 
   resources :houses
 

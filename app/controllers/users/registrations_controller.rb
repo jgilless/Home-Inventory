@@ -43,14 +43,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # You can put the params you want to permit in the empty array.
   def configure_sign_up_params
     devise_parameter_sanitizer.for(:sign_up) { |u| 
-      u.permit(:email, :password, :password_confirmation, :address_attributes => [:line_1, :line_2, :number, :city, :zip, :state, :country])
+      u.permit(:email,:first_name, :last_name, :telephone, :password, :password_confirmation, :address_attributes => [:line_1, :line_2, :number, :city, :zip, :state, :country])
     }
   end
 
   # You can put the params you want to permit in the empty array.
   def configure_account_update_params
     devise_parameter_sanitizer.for(:account_update) { |u| 
-      u.permit(:email, :password, :password_confirmation, :current_password, :address_attributes => [:line_1, :line_2, :number, :city, :zip, :state, :country])
+      u.permit(:email, :first_name, :last_name, :telephone, :password, :password_confirmation, :current_password, :address_attributes => [:line_1, :line_2, :number, :city, :zip, :state, :country])
     }
   end
 

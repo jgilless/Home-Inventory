@@ -1,0 +1,76 @@
+<table>
+  <tr>
+    <th>
+      Name
+    </th>
+    <th>
+      Category
+    </th>
+    <th>
+      Room
+    </th>
+    <th>
+      Make
+    </th>
+    <th>
+      Model
+    </th>
+    <th>
+      Quantity
+    </th>
+    <th>
+      Place of Purchase
+    </th>
+    <th>
+      Purchase Price
+    </th>
+    <th>
+      Replacement Price
+    </th>
+    <th>
+      Serial No.
+    </th>
+  </tr>
+  <% @items.each do |item| %>
+    <tr>
+      <td>
+        <%= item.name %>
+      </td>
+      <td>
+        <% unless item.category.nil? %>
+          <%= item.category.name %>
+        <% else %>
+          Uncategorized
+        <% end %>
+      </td>
+      <td>
+        <% unless item.room.nil? %>
+          <%= item.room.name %>
+        <% else %>
+          No Room
+        <% end %>
+      </td>
+      <td>
+        <%= item.make %>
+      </td>
+      <td>
+        <%= item.model %>
+      </td>
+      <td>
+        <%= item.quantity %>
+      </td>
+      <td>
+        <%= item.place_of_purchase %>
+      </td>
+      <td>
+        <%= item.purchase_price %>
+      </td>
+      <td>
+        <%= item.replacement_price %>
+      </td>
+      <td>
+        <%= item.serial_number %>
+      </td>
+    </tr>
+  <% end %>
+</table>

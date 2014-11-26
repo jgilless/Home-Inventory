@@ -2,4 +2,26 @@ class ItemsController < ApplicationController
   def index
     @items = current_user.items
   end
+
+  def create
+    @item = current_user.items.new(item_params)
+    @item.save
+    redirect_to houses_path
+  end
+
+  def house_items
+    @items = current_user.houses.find(params[:house_id]).items
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  private
+    def set_item
+      @item = Item.find(params[:id])
+    end
+
+    def item_params
+      params.require(:item).permit(:house_id, :room_id, :category_id, :name, :make, :model, :quantity, :place_of_purchase, :purchase_price, :purchase_date, :replacement_price, :serial_number, :bar_code)
+    end
 end

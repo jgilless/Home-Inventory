@@ -1,59 +1,35 @@
-<h1>Listing houses</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @houses.each do |house| %>
-      <tr>
-        <td><%= house.user_id %></td>
-        <td><%= house.name %></td>
-        <td><%= link_to 'Show', house %></td>
-        <td><%= link_to 'Edit', edit_house_path(house) %></td>
-        <td><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<a href="#" data-reveal-id="myModal" class="button">New House</a>
-
-<div id="myModal" class="reveal-modal" data-reveal>
-  <%= form_for("house", :url => '/houses') do |f| %> 
-    <div class="row">
-      <div class="large-6 columns">
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.label :name %><br>
-        <%= f.text_field :name %>
-        <%= f.fields_for :address_attributes do |ff| %>
-          <div><%= ff.label :line_1 %><br />
-          <%= ff.text_field :line_1 %></div>
-          <div><%= ff.label :line_2 %><br />
-          <%= ff.text_field :line_2 %></div>
-          <div><%= ff.label :number %><br />
-          <%= ff.text_field :number %></div>
-          <%= f.submit "Create House", class: "button" %>
-        </div>
-        <div class="large-6 columns">
-          <div><%= ff.label :city %><br />
-          <%= ff.text_field :city %></div>
-          <div><%= ff.label :zip %><br />
-          <%= ff.text_field :zip %></div>
-          <div><%= ff.label :state %><br />
-          <%= ff.text_field :state %></div>
-          <div><%= ff.label :country %><br />
-          <%= ff.text_field :country %></div>
-        <% end %>
+<div class="row">
+  <% @houses.each do |house| %>
+    <%= link_to house_items_path(:house_id => house.id), remote: true do %>
+      <div class="large-3 columns left">
+        <%= house.name %><br />
+        <%= house.address.natural %>
       </div>
-    </div>
-  <% end %> 
+    <% end %>
+  <% end %>
+</div>
+<div class="row">
+  <div id="item_container">
+    <h1>ITEMS GO HERE</h1>
+  </div>
+</div>
+<a href="#" data-reveal-id="new_house" class="button">New House</a>
+
+<div id="new_house" class="reveal-modal" data-reveal>
+  <%= render 'new_house' %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<a href="#" data-reveal-id="new_category" class="button">New Category</a>
+
+<div id="new_category" class="reveal-modal" data-reveal>
+  <%= render 'categories/create_category' %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<a href="#" data-reveal-id="new_room" class="button">New Room</a>
+
+<div id="new_room" class="reveal-modal" data-reveal>
+  <%= render 'rooms/create_room' %>
   <a class="close-reveal-modal">&#215;</a>
 </div>

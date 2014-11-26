@@ -1,0 +1,7 @@
+<%= form_for("room", :url => '/rooms') do |f| %> 
+  <h2>New Room Name</h2>
+  <%= f.hidden_field :house_id, value: 1 %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit "Create Room", class: "button" %>
+<% end %> 
