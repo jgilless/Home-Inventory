@@ -1,0 +1,35 @@
+<div class="row">
+  <% @houses.each do |house| %>
+    <%= link_to house_items_path(:house_id => house.id), remote: true do %>
+      <div class="large-2 columns left">
+        <%= house.name %><br />
+        <%= house.address.natural %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="row">
+  <div id="item_container">
+    <h1>ITEMS GO HERE</h1>
+  </div>
+</div>
+<a href="#" data-reveal-id="new_house" class="button">New House</a>
+
+<div id="new_house" class="reveal-modal" data-reveal>
+  <%= render 'houses/new_house' %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<a href="#" data-reveal-id="new_category" class="button">New Category</a>
+
+<div id="new_category" class="reveal-modal" data-reveal>
+  <%= render 'categories/create_category' %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<a href="#" data-reveal-id="new_room" class="button">New Room</a>
+
+<div id="new_room" class="reveal-modal" data-reveal>
+  <%= render 'rooms/create_room' %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>

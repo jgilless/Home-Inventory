@@ -14,12 +14,7 @@
   <body>
     <%= render "layouts/header" %>
     <div class="row">
-      <div class="large-2 columns">
-        <%= render 'layouts/side_navigation' %>
-      </div>
-      <div class="large-10 columns">
-        <%= yield %>
-      </div>
+      <%= yield %>
     </div>
     <%= javascript_include_tag "application" %>
   </body>

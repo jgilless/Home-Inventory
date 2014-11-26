@@ -8,34 +8,38 @@
   </ul>
 
   <section class="top-bar-section">
-    <!-- Right Nav Section -->
-    <ul class="right">
-      <li class="divider"></li>
-      <li>
-        <%= link_to 'https://github.com/jgilless' do %>
-          @jgilless
-        <% end %> 
-      </li>
-      <li class="divider"></li>
-      <li>
-        <%= link_to 'https://twitter.com/joshuagilless' do %>
-          @JoshuaGilless
-        <% end %> 
-      </li>
-      <li class="divider"></li>
-      <li>
-        Hello!
-      </li>
-    </ul>
     <!-- Left Nav Section -->
     <% if user_signed_in? %>
       <ul class="left">
         <li class="divider"></li>
         <li>
-          <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+          <%= link_to "Inventory", inventory_path %>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <%= link_to "Improvements", improvements_path %>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <%= link_to "Reports", reports_path %>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <%= link_to "Insurance", insurance_path %>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <%= link_to "Settings", settings_path %>
         </li>
         <li class="divider"></li>
       </ul>
     <% end  %>
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="divider"></li>
+      <li>
+        <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+      </li>
+    </ul>
   </section>
 </nav>

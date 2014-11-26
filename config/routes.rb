@@ -8,6 +8,12 @@ Rails.application.routes.draw do
 
   get '/house_items' => 'items#house_items', as: :house_items
 
+  get '/inventory' => 'pages#inventory', as: :inventory
+  get '/improvements' => 'pages#improvements', as: :improvements
+  get '/reports' => 'pages#reports', as: :reports
+  get '/insurance' => 'pages#insurance', as: :insurance
+  get '/settings' => 'pages#settings', as: :settings
+
   resources :houses
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
@@ -15,7 +21,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'static_pages#home'
+  root 'pages#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
