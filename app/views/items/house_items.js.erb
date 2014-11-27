@@ -1,1 +1,3 @@
+$(".house.selected").removeClass("selected");
 $("#item_container").html("<%= escape_javascript(render partial: 'item_grid', locals: { items: @items } ) %>"); 
+$("#house_<%= escape_javascript(@house.id.to_s) %>").addClass("selected");

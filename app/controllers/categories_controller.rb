@@ -2,12 +2,12 @@ class CategoriesController < ApplicationController
   def create
     @category = current_user.categories.new(category_params) 
     @category.save
-    redirect_to houses_path
+    redirect_to inventory_path
   end
 
   def destroy
     @category.destroy
-    redirect_to houses_path
+    redirect_to inventory_path
   end
 
   private

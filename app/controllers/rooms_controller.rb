@@ -1,8 +1,8 @@
 class RoomsController < ApplicationController
   def create
-    @room = Room.new(room_params)
+    @room = current_user.houses.find(params[:house_id]).new(room_params)
     @room.save
-    redirect_to houses_path
+    redirect_to inventory_path
   end
 
   private

@@ -2,8 +2,6 @@ class HousesController < ApplicationController
   before_action :set_house, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-  respond_to :html, :js, :json
-
   def index
     @houses = current_user.houses.all
     @rooms = current_user.rooms.all
@@ -27,7 +25,7 @@ class HousesController < ApplicationController
   def create
     @house = current_user.houses.new(house_params)
     @house.save
-    respond_with(@house)
+    redirect_to inventory_path
   end
 
   def update

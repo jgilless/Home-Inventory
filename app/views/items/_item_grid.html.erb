@@ -10,16 +10,19 @@
       Room
     </th>
     <th>
+      Quantity
+    </th>
+    <th>
       Make
     </th>
     <th>
       Model
     </th>
     <th>
-      Quantity
+      Place of Purchase
     </th>
     <th>
-      Place of Purchase
+      Purchase Date
     </th>
     <th>
       Purchase Price
@@ -28,7 +31,10 @@
       Replacement Price
     </th>
     <th>
-      Serial No.
+      Serial Number
+    </th>
+    <th>
+      Bar Code
     </th>
   </tr>
   <% @items.each do |item| %>
@@ -51,13 +57,13 @@
         <% end %>
       </td>
       <td>
+        <%= item.quantity %>
+      </td>
+      <td>
         <%= item.make %>
       </td>
       <td>
         <%= item.model %>
-      </td>
-      <td>
-        <%= item.quantity %>
       </td>
       <td>
         <%= item.place_of_purchase %>
@@ -66,10 +72,19 @@
         <%= item.purchase_price %>
       </td>
       <td>
+        <%= item.purchase_date %>
+      </td>
+      <td>
         <%= item.replacement_price %>
       </td>
       <td>
         <%= item.serial_number %>
+      </td>
+      <td>
+        <%= item.bar_code %>
+      </td>
+      <td>
+        <%= link_to "Delete", delete_item_path(item.id), method: :delete, :data => {confirm: "Are you sure you want to permanently delete this item?"} %>
       </td>
     </tr>
   <% end %>

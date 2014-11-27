@@ -1,35 +1,46 @@
-<div class="row">
+<div class="large-2 columns">
+  <h1>Houses</h1>
   <% @houses.each do |house| %>
-    <%= link_to house_items_path(:house_id => house.id), remote: true do %>
-      <div class="large-2 columns left">
-        <%= house.name %><br />
-        <%= house.address.natural %>
-      </div>
-    <% end %>
+    <div class="row">
+      <%= link_to house_items_path(:house_id => house.id), remote: true, class: "house", id: "house_#{house.id}", data: house.id do %>
+        <div class="large-12 columns">
+          <%= house.name %><br />
+          <%= house.address.natural %><br /><br />
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
-<div class="row">
-  <div id="item_container">
-    <h1>ITEMS GO HERE</h1>
+<div class="large-10 columns">
+  <h1>Items</h1>
+  <a href="#" data-reveal-id="new_item" class="button">New Item</a>
+
+  <div id="new_item" class="reveal-modal" data-reveal>
+    <%= render 'items/create_item' %>
+    <a class="close-reveal-modal">&#215;</a>
   </div>
-</div>
-<a href="#" data-reveal-id="new_house" class="button">New House</a>
 
-<div id="new_house" class="reveal-modal" data-reveal>
-  <%= render 'houses/new_house' %>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
+  <a href="#" data-reveal-id="new_house" class="button">New House</a>
 
-<a href="#" data-reveal-id="new_category" class="button">New Category</a>
+  <div id="new_house" class="reveal-modal" data-reveal>
+    <%= render 'houses/new_house' %>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
 
-<div id="new_category" class="reveal-modal" data-reveal>
-  <%= render 'categories/create_category' %>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
+  <a href="#" data-reveal-id="new_category" class="button">New Category</a>
 
-<a href="#" data-reveal-id="new_room" class="button">New Room</a>
+  <div id="new_category" class="reveal-modal" data-reveal>
+    <%= render 'categories/create_category' %>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
 
-<div id="new_room" class="reveal-modal" data-reveal>
-  <%= render 'rooms/create_room' %>
-  <a class="close-reveal-modal">&#215;</a>
+  <a href="#" data-reveal-id="new_room" class="button">New Room</a>
+
+  <div id="new_room" class="reveal-modal" data-reveal>
+    <%= render 'rooms/create_room' %>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+  <div id="item_container">
+    <!-- items partial gets populated here -->  
+  </div>
 </div>

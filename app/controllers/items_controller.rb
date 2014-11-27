@@ -6,11 +6,18 @@ class ItemsController < ApplicationController
   def create
     @item = current_user.items.new(item_params)
     @item.save
-    redirect_to houses_path
+    redirect_to inventory_path
+  end
+
+  def destroy
+    @item = current_user.items.find(params[:id])
+    @item.destroy
+    redirect_to inventory_path
   end
 
   def house_items
     @items = current_user.houses.find(params[:house_id]).items
+    @house = current_user.houses.find(params[:house_id])
     respond_to do |format|
       format.js
     end
