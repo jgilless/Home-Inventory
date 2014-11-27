@@ -1,0 +1,13 @@
+<% headers = ['Name', 'Category', 'Room', 'Quantity', 'Make', 'Model', 'Place of Purchase', 'Purchase Date', 'Purchase Price', 'Replacement Price', 'Serial Number', 'Bar Code'] %>
+<%= CSV.generate_line headers %>
+<% @items.each do |item| %>
+  <% if !item.category.nil? && !item.room.nil? %>
+    <%= CSV.generate_line([item.name, item.category.name, item.room.name, item.quantity, item.make, item.model, item.place_of_purchase, item.purchase_date, item.purchase_price, item.replacement_price, item.serial_number, item.bar_code]) %>
+  <% elsif item.category.nil? && !item.room.nil? %>
+    <%= CSV.generate_line([item.name, 'uncategorized', item.room.name, item.quantity, item.make, item.model, item.place_of_purchase, item.purchase_date, item.purchase_price, item.replacement_price, item.serial_number, item.bar_code]) %>
+  <% elsif !item.category.nil? && item.room.nil? %>
+    <%= CSV.generate_line([item.name, item.category.name, 'no room', item.quantity, item.make, item.model, item.place_of_purchase, item.purchase_date, item.purchase_price, item.replacement_price, item.serial_number, item.bar_code]) %>
+  <% else %>
+    <%= CSV.generate_line([item.name, 'uncategorized', 'no room', item.quantity, item.make, item.model, item.place_of_purchase, item.purchase_date, item.purchase_price, item.replacement_price, item.serial_number, item.bar_code]) %>
+  <% end %>
+<% end %>

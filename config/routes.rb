@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   post '/categories' => 'categories#create'
 
+  get '/items' => 'items#index', as: :items
   post '/items' => 'items#create'
   delete '/items/:id' => 'items#destroy', as: :delete_item
 

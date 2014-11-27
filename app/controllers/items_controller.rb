@@ -1,6 +1,14 @@
 class ItemsController < ApplicationController
   def index
     @items = current_user.items
+    respond_to do |format|
+      format.html
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"item_list.csv\""
+        headers['Content-Type'] = 'text/csv'
+      end
+      format.xls
+    end
   end
 
   def create

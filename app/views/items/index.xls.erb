@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Name</Data></Cell>
+        <Cell><Data ss:Type="String">Category</Data></Cell>
+        <Cell><Data ss:Type="String">Room</Data></Cell>
+        <Cell><Data ss:Type="String">Quantity</Data></Cell>
+        <Cell><Data ss:Type="String">Make</Data></Cell>
+        <Cell><Data ss:Type="String">Model</Data></Cell>
+        <Cell><Data ss:Type="String">Place of Purchase</Data></Cell>
+        <Cell><Data ss:Type="String">Purchase Date</Data></Cell>
+        <Cell><Data ss:Type="String">Purchase Price</Data></Cell>
+        <Cell><Data ss:Type="String">Replacement Price</Data></Cell>
+        <Cell><Data ss:Type="String">Serial Number</Data></Cell>
+        <Cell><Data ss:Type="String">Bar Code</Data></Cell>
+      </Row>
+    <% @items.each do |item| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= item.name %></Data></Cell>
+        <% if !item.category.nil? %>
+          <Cell><Data ss:Type="String"><%= item.category.name %></Data></Cell>
+        <% else %>
+          <Cell><Data ss:Type="String">uncategorized</Data></Cell>
+        <% end %>
+        <% if !item.room.nil? %>
+          <Cell><Data ss:Type="String"><%= item.room.name %></Data></Cell>
+        <% else %>
+          <Cell><Data ss:Type="String">no room</Data></Cell>
+        <% end %>
+        <Cell><Data ss:Type="Number"><%= item.quantity %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= item.make %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= item.model %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= item.place_of_purchase %></Data></Cell>
+        <Cell><Data ss:Type="Date"><%= item.purchase_date %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= item.purchase_price %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= item.replacement_price %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= item.serial_number %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= item.bar_code %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
