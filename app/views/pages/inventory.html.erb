@@ -13,35 +13,44 @@
 </div>
 <div class="large-10 columns">
   <h1>Items</h1>
-  <a href="#" data-reveal-id="new_item" class="button">New Item</a>
-
-  <div id="new_item" class="reveal-modal" data-reveal>
-    <%= render 'items/create_item' %>
-    <a class="close-reveal-modal">&#215;</a>
-  </div>
-
   <a href="#" data-reveal-id="new_house" class="button">New House</a>
 
   <div id="new_house" class="reveal-modal" data-reveal>
-    <%= render 'houses/new_house' %>
+    <div id="create_house">
+      <%= render 'houses/create_house' %>
+    </div>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+  <a href="#" data-reveal-id="new_item" class="button">New Item</a>
+
+  <div id="new_item" class="reveal-modal" data-reveal>
+    <div id="create_item">
+      <%= render 'items/create_item' %>
+    </div>
     <a class="close-reveal-modal">&#215;</a>
   </div>
 
   <a href="#" data-reveal-id="new_category" class="button">New Category</a>
 
   <div id="new_category" class="reveal-modal" data-reveal>
-    <%= render 'categories/create_category' %>
+    <div id="create_category">
+      <%= render 'categories/create_category' %>
+    </div>
     <a class="close-reveal-modal">&#215;</a>
   </div>
 
   <a href="#" data-reveal-id="new_room" class="button">New Room</a>
 
   <div id="new_room" class="reveal-modal" data-reveal>
-    <%= render 'rooms/create_room' %>
+    <div id="create_room">
+      <%= render 'rooms/create_room' %>
+    </div>
     <a class="close-reveal-modal">&#215;</a>
   </div>
+
   <%= link_to "Download CSV", items_path(format: :csv), class: "button success" %>
   <%= link_to "Download Excel", items_path(format: :xls), class: "button success" %>
+  
   <div id="item_container">
     <!-- items partial gets populated here -->  
   </div>

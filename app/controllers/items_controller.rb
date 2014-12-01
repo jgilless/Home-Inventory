@@ -14,18 +14,35 @@ class ItemsController < ApplicationController
   def create
     @item = current_user.items.new(item_params)
     @item.save
-    redirect_to inventory_path
+    respond_to do |format|
+      format.js
+    end
   end
 
   def destroy
     @item = current_user.items.find(params[:id])
     @item.destroy
-    redirect_to inventory_path
+    respond_to do |format|
+      format.js
+    end
   end
 
   def house_items
     @items = current_user.houses.find(params[:house_id]).items
     @house = current_user.houses.find(params[:house_id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def refresh_item
+    @house = current_user.houses.find(params[:house_id])
+    @houses = current_user.houses.all
+    @rooms = current_user.rooms.all
+    @categories = current_user.categories
+    @house_options = @houses.map { |house| [house.name, house.id] }
+    @room_options = @rooms.map { |room| [room.name, room.id] }
+    @category_options = @categories.map { |cat| [cat.name, cat.id] }
     respond_to do |format|
       format.js
     end

@@ -1,0 +1,3 @@
+$('a.close-reveal-modal').trigger('click');
+$("#create_item").html("<%= escape_javascript(render 'items/create_item', locals: { house_options: @house_options, item_options: @item_options, room_options: @room_options } ) %>");
+$("#house_<%= escape_javascript(@house.id.to_s) %>").trigger("click");

@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   def create
     @category = current_user.categories.new(category_params) 
     @category.save
-    redirect_to inventory_path
+    redirect_to refresh_item_path(:house_id => current_user.houses.first.id)
   end
 
   def destroy

@@ -84,7 +84,7 @@
         <%= item.bar_code %>
       </td>
       <td>
-        <%= link_to "Delete", delete_item_path(item.id), method: :delete, :data => {confirm: "Are you sure you want to permanently delete this item?"} %>
+        <%= link_to "Delete", delete_item_path(item.id), method: :delete, remote: true, :data => {confirm: "Are you sure you want to permanently delete this item?"} %>
       </td>
     </tr>
   <% end %>

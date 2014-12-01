@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/items' => 'items#index', as: :items
   post '/items' => 'items#create'
   delete '/items/:id' => 'items#destroy', as: :delete_item
+  get '/items/refresh_item/:house_id' => 'items#refresh_item', as: :refresh_item
 
   get '/house_items' => 'items#house_items', as: :house_items
 
