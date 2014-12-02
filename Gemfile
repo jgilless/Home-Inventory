@@ -15,6 +15,11 @@ group :development do
   gem 'meta_request'
 end
 
+#File Upload
+gem 'carrierwave'
+gem "mini_magick"
+gem 'remotipart', '~> 1.2'
+
 #Users
 gem 'devise'
 #Frontend

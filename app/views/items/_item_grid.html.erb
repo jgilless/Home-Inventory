@@ -38,6 +38,9 @@
     <tr>
       <td>
         <%= item.name %>
+        <% unless item.image.nil? %>
+          <%= image_tag item.image %>
+        <% end %>
       </td>
       <td>
         <% unless item.category.nil? %>
