@@ -33,9 +33,6 @@
     <th>
       Serial Number
     </th>
-    <th>
-      Bar Code
-    </th>
   </tr>
   <% @items.each do |item| %>
     <tr>
@@ -81,7 +78,11 @@
         <%= item.serial_number %>
       </td>
       <td>
-        <%= item.bar_code %>
+        <%= link_to "Edit", "#", "data-reveal-id" => "edit_item_#{item.id}" %>
+        <%= content_tag :div, id: "edit_item_#{item.id}", class: "reveal-modal", "data-reveal" => true do %>
+          <%= render 'items/update_item', item: item, house_options: @house_options %>
+          <%= link_to "&#215;".html_safe, "#", onclick: "$('#edit_item_#{item.id.to_s}').foundation('reveal', 'close');", class: "close-reveal-modal" %> 
+        <% end %>
       </td>
       <td>
         <%= link_to "Delete", delete_item_path(item.id), method: :delete, remote: true, :data => {confirm: "Are you sure you want to permanently delete this item?"} %>

@@ -27,9 +27,20 @@ class ItemsController < ApplicationController
     end
   end
 
+  def update
+    @item = current_user.items.find(params[:id])
+    @item.update(item_params)
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def house_items
     @items = current_user.houses.find(params[:house_id]).items
     @house = current_user.houses.find(params[:house_id])
+    @house_options = current_user.houses.all.map { |house| [house.name, house.id] }
+    @room_options = current_user.rooms.all.map { |room| [room.name, room.id] }
+    @category_options = current_user.categories.all.map { |cat| [cat.name, cat.id] }
     respond_to do |format|
       format.js
     end
