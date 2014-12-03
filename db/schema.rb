@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202212956) do
+ActiveRecord::Schema.define(version: 20141203175158) do
 
   create_table "addresses", force: true do |t|
     t.string   "line_1"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20141202212956) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image"
   end
 
   create_table "items", force: true do |t|

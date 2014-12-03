@@ -30,7 +30,9 @@ class HousesController < ApplicationController
 
   def update
     @house.update(house_params)
-    respond_with(@house)
+    respond_to do |format|
+      format.js
+    end
   end
 
   def destroy
@@ -44,6 +46,6 @@ class HousesController < ApplicationController
     end
 
     def house_params
-      params.require(:house).permit(:user_id, :name, :address_attributes => [:line_1, :line_2, :number, :city, :zip, :state, :country])
+      params.require(:house).permit(:user_id, :name, :image, :address_attributes => [:line_1, :line_2, :number, :city, :zip, :state, :country])
     end
 end

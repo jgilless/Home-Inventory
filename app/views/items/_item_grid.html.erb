@@ -37,9 +37,11 @@
   <% @items.each do |item| %>
     <tr>
       <td>
-        <%= item.name %>
-        <% unless item.image.nil? %>
-          <%= image_tag item.image.thumb %>
+        <%= link_to show_item_path(item.id), remote: true do %>
+          <%= item.name %>
+          <% unless item.image.nil? %>
+            <%= image_tag item.image.thumb %>
+          <% end %>
         <% end %>
       </td>
       <td>

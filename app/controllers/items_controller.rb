@@ -35,6 +35,13 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    @item = current_user.items.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def house_items
     @items = current_user.houses.find(params[:house_id]).items
     @house = current_user.houses.find(params[:house_id])

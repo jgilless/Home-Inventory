@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   patch '/items/:id' => 'items#update', as: :item
   delete '/items/:id' => 'items#destroy', as: :delete_item
   get '/items/refresh_item/:house_id' => 'items#refresh_item', as: :refresh_item
-
+  get '/items/:id' => 'items#show', as: :show_item
   get '/house_items' => 'items#house_items', as: :house_items
 
   get '/inventory' => 'pages#inventory', as: :inventory
