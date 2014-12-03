@@ -14,8 +14,6 @@ Rails.application.routes.draw do
 
   get '/inventory' => 'pages#inventory', as: :inventory
   get '/improvements' => 'pages#improvements', as: :improvements
-  get '/reports' => 'pages#reports', as: :reports
-  get '/insurance' => 'pages#insurance', as: :insurance
   get '/settings' => 'pages#settings', as: :settings
 
   resources :houses

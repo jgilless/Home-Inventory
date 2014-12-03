@@ -16,12 +16,6 @@ class PagesController < ApplicationController
   def improvements
   end
 
-  def reports
-  end
-
-  def insurance
-  end
-
   def settings
   end
 end
