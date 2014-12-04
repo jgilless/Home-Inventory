@@ -1,5 +1,9 @@
 <%= image_tag house.image %><br />
 <%= house.address.natural %><br />
 
-
-<%= link_to 'Edit', edit_house_path(@house) %>
+<%= link_to "Edit", "#", "data-reveal-id" => "edit_house_#{@house.id}" %>
+  <%= content_tag :div, id: "edit_house_#{@house.id}", class: "reveal-modal", "data-reveal" => true do %>
+  <%= render 'houses/update_house', house: @house %>
+  <%= link_to "&#215;".html_safe, "#", onclick: "$('#edit_house_#{@house.id.to_s}').foundation('reveal', 'close');", class: "close-reveal-modal" %> 
+<% end %>|
+<%= link_to "Delete", "/houses/#{house.id}", method: :delete, remote: true, :data => {confirm: "Are you sure you want to permanently delete this item?"} %>

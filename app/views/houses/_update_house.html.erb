@@ -1,0 +1,31 @@
+<h1>Update <%= house.name %></h1>
+<%= form_for house, method: :patch, remote: true do |f| %> 
+  <div class="row">
+    <div class="large-6 columns">
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+      <%= f.fields_for :address do |ff| %>
+        <div><%= ff.label :line_1 %><br />
+        <%= ff.text_field :line_1 %></div>
+        <div><%= ff.label :line_2 %><br />
+        <%= ff.text_field :line_2 %></div>
+        <div><%= ff.label :number %><br />
+        <%= ff.text_field :number %></div>
+      </div>
+      <div class="large-6 columns">
+        <div><%= ff.label :city %><br />
+        <%= ff.text_field :city %></div>
+        <div><%= ff.label :zip %><br />
+        <%= ff.text_field :zip %></div>
+        <div><%= ff.label :state %><br />
+        <%= ff.text_field :state %></div>
+        <div><%= ff.label :country %><br />
+        <%= ff.text_field :country %></div>
+        <%= f.submit "Update House", class: "button" %>
+      <% end %>
+    </div>
+  </div>
+<% end %> 

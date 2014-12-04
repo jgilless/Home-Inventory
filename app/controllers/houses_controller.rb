@@ -37,7 +37,7 @@ class HousesController < ApplicationController
 
   def destroy
     @house.destroy
-    respond_with(@house)
+    redirect_to inventory_path
   end
 
   private
